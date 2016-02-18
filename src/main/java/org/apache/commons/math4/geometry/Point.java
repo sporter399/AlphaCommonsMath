@@ -14,6 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ /*
+ * This is the code that interests me in ApacheCommonsMath. I hope to alter the input data
+ * for the testing of the function that computes the distance between the instance and another point.
+ * SP
+ */
 package org.apache.commons.math4.geometry;
 
 import java.io.Serializable;
