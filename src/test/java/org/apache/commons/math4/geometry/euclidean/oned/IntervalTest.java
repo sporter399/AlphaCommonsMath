@@ -65,6 +65,8 @@ public class IntervalTest {
         Assert.assertTrue(Double.isInfinite(interval.getSup()));
 
     }
+    //The code below is where, I think, I can alter he test values for the single point function in Apache Euclidean Geomtery.//
+    
 
     @Test
     public void testSinglePoint() {
