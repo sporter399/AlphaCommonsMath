@@ -70,10 +70,24 @@ public class IntervalTest {
 
     @Test
     public void testSinglePoint() {
+        //The code below is mine with a change of interval for the point. SP
+    	Interval interval = new Interval(2.0, 2.0);
+    	Assert.assertEquals(0.0, interval.getSize(), Precision.SAFE_MIN);
+    	Assert.assertEquals(2.0, interval.getBarycenter(), Precision.EPSILON);
+    	System.out.println(interval.getInf());
+        System.out.println(interval.getSup());
+    }
+    //Code below is original with my printlines added. SP
+    /*
+    								{
         Interval interval = new Interval(1.0, 1.0);
         Assert.assertEquals(0.0, interval.getSize(), Precision.SAFE_MIN);
         Assert.assertEquals(1.0, interval.getBarycenter(), Precision.EPSILON);
+        
+        System.out.println(interval.getInf());
+        System.out.println(interval.getSup());
     }
+    */
 
     // MATH-1256
     @Test(expected=NumberIsTooSmallException.class)
