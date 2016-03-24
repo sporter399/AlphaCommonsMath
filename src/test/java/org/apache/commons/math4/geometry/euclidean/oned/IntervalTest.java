@@ -38,7 +38,11 @@ public class IntervalTest {
         Assert.assertEquals(Region.Location.INSIDE,   interval.checkPoint(3.0, 1.0e-10));
         Assert.assertEquals(2.3, interval.getInf(), 1.0e-10);
         Assert.assertEquals(5.7, interval.getSup(), 1.0e-10);
+      
+        
+        
     }
+    
 
     @Test
     public void testTolerance() {
@@ -65,33 +69,44 @@ public class IntervalTest {
         Assert.assertTrue(Double.isInfinite(interval.getSup()));
 
     }
-    //The code below is where, I think, I can alter he test values for the single point function in Apache Euclidean Geomtery.//
-    
 
     @Test
     public void testSinglePoint() {
-        //The code below is mine with a change of interval for the point. SP
-    	Interval interval = new Interval(2.0, 2.0);
-    	Assert.assertEquals(0.0, interval.getSize(), Precision.SAFE_MIN);
-    	Assert.assertEquals(2.0, interval.getBarycenter(), Precision.EPSILON);
-    	System.out.println(interval.getInf());
-        System.out.println(interval.getSup());
-    }
-    //Code below is original with my printlines added. SP
-    /*
-    								{
-        Interval interval = new Interval(1.0, 1.0);
-        Assert.assertEquals(0.0, interval.getSize(), Precision.SAFE_MIN);
-        Assert.assertEquals(1.0, interval.getBarycenter(), Precision.EPSILON);
+    	/*
+    	 * Coordinates of point/interval, and corresponding change in
+    	 upper boundary of interval.
+    	 */
+    	
+    	Interval interval = new Interval(1000.0, 1000.0);
+    	Assert.assertEquals(0.0, interval.getSize(), Precision.SAFE_MIN); //method calls in testing format, Assert is a method of testing
+    	Assert.assertEquals(1000, interval.getBarycenter(), Precision.EPSILON);
+    	Assert.assertEquals(1000.0, interval.getSup(), 10e-10);
+    	Assert.assertEquals(1000.0, interval.getInf(), 10e-10);
+    	Location location = interval.checkPoint(9.0, Double.POSITIVE_INFINITY);
+    	
+    	/*
+    	 * Printlines added for confirmation of return of altered coordinates.
+    	 * Print of location from checkPoint method will always return Boundary
+    	 * in testSinglePoint
+    	 */
+    	
+    	System.out.println("Upper bound of interval="+interval.getSup());
+    	System.out.println("Size of interval="+interval.getSize());
+    	System.out.println("Lower bound of point interval="+interval.getInf());
+        System.out.println("Barycenter of point interval="+interval.getBarycenter());
+        System.out.println("Location="+location);
         
-        System.out.println(interval.getInf());
-        System.out.println(interval.getSup());
+    	
+        
+        
     }
-    */
+    
 
     // MATH-1256
     @Test(expected=NumberIsTooSmallException.class)
     public void testStrictOrdering() {
         new Interval(0, -1);
+    
+    
     }
 }
